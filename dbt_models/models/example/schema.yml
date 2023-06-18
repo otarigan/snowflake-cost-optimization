@@ -2,20 +2,23 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: last_queried_tables
+    description: Fetches last time a table was mentioned in a query
     columns:
-      - name: id
-        description: "The primary key for this table"
+      - name: table_name
+        description: Name of the table
         tests:
-          - unique
+          - not_null
+      name: table_schema
+        description: Schema of table
+        tests:
+          - not_null
+      name: last_queried
+        description: The last time a table was mentioned in query text
+        tests:
+          - not_null
+      name: query_count
+        description: Number of times table was queried from
+        tests:
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null

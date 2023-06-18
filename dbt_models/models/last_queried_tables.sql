@@ -7,7 +7,7 @@ FROM
     INFORMATION_SCHEMA.tables AS t  
 LEFT JOIN
     ACCOUNT_USAGE.query_history AS q
-ON CONTAINS (q.query_text, q.table_name)
+ON CONTAINS (q.query_text, t.table_name)
 GROUP BY 
     table_name 
     , table_schema
